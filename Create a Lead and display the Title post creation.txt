@@ -1,0 +1,112 @@
+package oct17.Week2;
+
+import org.openqa.selenium.WebElement;
+
+//https://github.com/TestLeafPages/SeleniumAssignments/blob/master/week2/day1.assignments/CreateLead.java//
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.debugger.model.SearchMatch;
+import org.openqa.selenium.support.ui.Select;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class AutomateBrowser {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver.exe");
+		
+		ChromeDriver driver = new ChromeDriver();
+
+//	Enabling the chrome driver and accessing the chrome browser//
+		WebDriverManager.chromedriver().setup();
+
+//	For loading the web URL//
+		driver.get("http://leaftaps.com/opentaps/control/login");
+
+//Maximize the web page of the browser//
+		driver.manage().window().maximize();
+		
+// 	Give delay//
+		Thread.sleep(2000);
+
+//Find the web element and type of return value expected//
+		WebElement username = driver.findElementById("username");
+		username.sendKeys("demosalesmanager");
+		Thread.sleep(2000);
+//Also we can pass like --> driver.findWebElementbyId("username").sendKeys("demosalesuser");//
+		
+		WebElement password = driver.findElementById("password");
+		password.sendKeys("crmsfa");
+		Thread.sleep(2000);
+//click on the  login button//
+		
+		driver.findElementByClassName("decorativeSubmit").click();
+		Thread.sleep(2000);
+		
+//click on CRM/SFA link with link txt as 2 identical items of same context are present//
+		driver.findElementByLinkText("CRM/SFA").click();
+		Thread.sleep(4000);
+
+//Click on lead main tab//
+		driver.findElementByLinkText("Leads").click();
+		Thread.sleep(2000);
+
+//Click on create lead tab//
+		driver.findElementByLinkText("Create Lead").click();
+		Thread.sleep(2000);
+		
+//Click on to Input Company name//
+		driver.findElementById("createLeadForm_companyName").sendKeys("KNIGHT INDUSTRIES TWO THOUSAND");
+		Thread.sleep(2000);
+		
+//Click on to Input First name//
+		driver.findElementById("createLeadForm_firstName").sendKeys("Senkathir");
+		Thread.sleep(2000);
+		
+//Click on to Input Last name//
+		driver.findElementById("createLeadForm_lastName").sendKeys("Selvan");
+		Thread.sleep(2000);
+		
+//Click on to select dropdown//
+		//driver.findElementById("createLeadForm_dataSourceId").click();//
+		//Thread.sleep(2000);//
+		
+//Select the input as Employee in dropdown//
+		WebElement source = driver.findElementById("createLeadForm_dataSourceId");
+		Select dropdownsource = new Select(source);
+		dropdownsource.selectByVisibleText("Employee");
+		Thread.sleep(2000);
+		
+//Select from dropdown for Pay per click option in Marketing ID section//
+		WebElement marketingID = driver.findElementById("createLeadForm_marketingCampaignId");
+		Select dropdownMarketingID = new Select(marketingID);
+		dropdownMarketingID.selectByValue("9001");
+		Thread.sleep(2000);
+
+//Select from dropdown for Pay per click option in Marketing ID section//
+		WebElement ownership = driver.findElementById("createLeadForm_marketingCampaignId");
+		Select dropdownOwnership = new Select(ownership);
+		dropdownOwnership.selectByIndex(6);
+		Thread.sleep(2000);
+
+//Select the Country as India and choose it as visible text//
+		WebElement country = driver.findElementById("createLeadForm_generalCountryGeoId");
+		Select dropdownCountry = new Select(country);
+		dropdownCountry.selectByVisibleText("India");
+		Thread.sleep(2000);
+
+//click on Create Lead at the bottom of the page with class name//
+		driver.findElementByClassName("smallSubmit").click();
+		Thread.sleep(2000);
+		
+//Now to get the title of the created Lead//
+		WebElement getcreatedLeadname = driver.findElementById("viewLead_companyName_sp");
+		System.out.println("The Company name of newly created lead is: " +getcreatedLeadname.getText());
+		Thread.sleep(2000);
+		//gettext(id="viewLead_companyName_sp");//
+		
+//Close the browser
+		driver.close();
+	}
+
+}
