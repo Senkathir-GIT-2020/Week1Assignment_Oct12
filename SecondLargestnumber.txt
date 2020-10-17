@@ -1,0 +1,20 @@
+
+
+package Oct10.mobileworks;
+
+import java.util.Arrays;
+
+public class FindSecondLargestInArray {
+	
+	public static int SecondLargest(int[] data, int totallength){  
+		Arrays.sort(data);  
+		return data[totallength-2];  
+}  
+
+public static void main(String args[]){  
+	int data[] = {3,2,11,4,6,7};
+  
+System.out.println("Second Largest number is : "+SecondLargest(data,6));  
+  
+	}
+}  

@@ -1,0 +1,52 @@
+package Oct10.mobileworks;
+
+public class MyCalculatorApp {
+	
+	public static void main(String[] args)
+	{
+	Calculator key = new Calculator();
+	{
+	System.out.println(key.Add(40, 30, 20));
+	
+	System.out.println(key.Sub(40, 10));
+	
+	System.out.println(key.Mul(40.50, 10.50));
+	
+	System.out.println(key.Div(4455.23f, 3544.56f));
+	}
+	
+	}
+	
+}
+
+
+
+========================
+
+package Oct10.mobileworks;
+
+public class Calculator {
+
+	//Declare the below methods which are to be called by another class//
+	
+	public int Add(int num1, int num2, int num3)
+	{
+		return num1 + num2 + num3;
+	}
+	
+	public int Sub(int num1, int num2)
+	{
+		return num1 - num2;	
+	}
+	
+	public double Mul(double num1, double num2)
+	{
+		return num1 * num2;
+	}
+	
+	public float Div(float num1, float num2)
+	{
+		return num1/num2;
+	}
+}
+
